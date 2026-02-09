@@ -17,12 +17,12 @@ export default function VendorSummaryContent() {
   ];
 
   const costTrendData = [
-    { year: '2024 Q1', stellar: 75, delayed: 55, risk: 35 },
-    { year: '2024 Q2', stellar: 78, delayed: 58, risk: 32 },
-    { year: '2024 Q3', stellar: 82, delayed: 62, risk: 30 },
-    { year: '2024 Q4', stellar: 85, delayed: 65, risk: 28 },
-    { year: '2025 Q1', stellar: 90, delayed: 70, risk: 25 },
-    { year: '2025 Q2', stellar: 95, delayed: 75, risk: 22 }
+    { year: '2024 Q1', stellar: 75, delayed: 55, risk: 10 },
+    { year: '2024 Q2', stellar: 78, delayed: 58, risk: 12 },
+    { year: '2024 Q3', stellar: 82, delayed: 62, risk: 15 },
+    { year: '2024 Q4', stellar: 85, delayed: 65, risk: 20 },
+    { year: '2025 Q1', stellar: 90, delayed: 70, risk: 22 },
+    { year: '2025 Q2', stellar: 95, delayed: 75, risk: 25 }
   ];
 
   const regionalData = [

@@ -2,10 +2,11 @@ import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, R
 
 export default function CFOContent() {
   const revenueData = [
-    { quarter: 'Q1', base: 0, value: 20, total: 20 },
-    { quarter: 'Q2', base: 20, value: 25, total: 45 },
-    { quarter: 'Q3', base: 45, value: 35, total: 80 },
-    { quarter: 'Q4', base: 80, value: 20, total: 100 }
+    { quarter: 'Q1', base: 0, value: 20, total: 20, year: 'Q1 2025' },
+    { quarter: 'Q2', base: 20, value: 25, total: 45, year: 'Q2 2025' },
+    { quarter: 'Q3', base: 45, value: 35, total: 80, year: 'Q3 2025' },
+    { quarter: 'Q4', base: 80, value: 20, total: 100, year: 'Q4 2025' },
+    { quarter: 'Total', base: 0, value: 100, total: 100, year: '2025' }
   ];
 
   const profitData = [
@@ -33,9 +34,9 @@ export default function CFOContent() {
   ];
 
   const riskData = [
-    { year: '2023', value: 35 },
-    { year: '2024', value: 38 },
-    { year: '2025', value: 41 }
+    { year: '2023', value: 0 },
+    { year: '2024', value: 12 },
+    { year: '2025', value: 25 }
   ];
 
   return (
@@ -54,7 +55,17 @@ export default function CFOContent() {
               <CartesianGrid strokeDasharray="3 3" stroke="#2a3441" strokeWidth={1.5} />
               <XAxis dataKey="quarter" stroke="#9ca3af" fontSize={13} fontWeight={500} />
               <YAxis stroke="#9ca3af" fontSize={13} fontWeight={500} label={{ value: 'Dollars (M)', angle: -90, position: 'insideLeft', offset: 10, style: { fill: '#9ca3af', fontSize: 12 } }} />
-              <Tooltip formatter={(value) => `$${value}M`} contentStyle={{ backgroundColor: '#1a1f2e', border: '1px solid #2a3441', borderRadius: '8px', fontSize: '13px' }} />
+              <Tooltip content={({ active, payload }) => {
+                if (active && payload && payload.length) {
+                  const data = payload[0].payload;
+                  return (
+                    <div style={{ backgroundColor: '#1a1f2e', border: '1px solid #2a3441', borderRadius: '8px', padding: '8px', fontSize: '13px' }}>
+                      <p style={{ margin: 0 }}>{data.year}: ${data.value}M</p>
+                    </div>
+                  );
+                }
+                return null;
+              }} />
               <Bar dataKey="base" stackId="a" fill="transparent" />
               <Bar dataKey="value" stackId="a" fill="#22c55e" radius={[8, 8, 0, 0]} />
             </BarChart>
@@ -108,8 +119,8 @@ export default function CFOContent() {
 
         <div className="card">
           <h3>Working Capital</h3>
-          <div className="signal warn">● Days Sales Outstanding (DSO)</div>
-          <div className="metric"><span>DSO</span><strong>68 days</strong></div>
+          <div className="signal bad">● Days Sales Outstanding (DSO)</div>
+          <div className="metric"><span>DSO(At Risk)</span><strong>68 days</strong></div>
           <ResponsiveContainer width="100%" height={240}>
             <LineChart data={dsoData} margin={{ top: 20, right: 15, left: 15, bottom: 10 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#2a3441" strokeWidth={1.5} />
@@ -124,12 +135,12 @@ export default function CFOContent() {
         <div className="card">
           <h3>Risk Exposure</h3>
           <div className="signal warn">● Concentration risk</div>
-          <div className="metric"><span>Top 3 Revenue</span><strong>41%</strong></div>
+          <div className="metric"><span>Revenue</span><strong>41%</strong></div>
           <ResponsiveContainer width="100%" height={240}>
             <LineChart data={riskData} margin={{ top: 20, right: 15, left: 15, bottom: 10 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#2a3441" strokeWidth={1.5} />
               <XAxis dataKey="year" stroke="#9ca3af" fontSize={13} fontWeight={500} />
-              <YAxis domain={[30, 45]} stroke="#9ca3af" fontSize={13} fontWeight={500} label={{ value: 'Percentage', angle: -90, position: 'insideLeft', offset: 10, style: { fill: '#9ca3af', fontSize: 12 } }} />
+              <YAxis domain={[0, 30]} stroke="#9ca3af" fontSize={13} fontWeight={500} label={{ value: 'Percentage', angle: -90, position: 'insideLeft', offset: 10, style: { fill: '#9ca3af', fontSize: 12 } }} />
               <Tooltip formatter={(value) => `${value}%`} contentStyle={{ backgroundColor: '#1a1f2e', border: '1px solid #2a3441', borderRadius: '8px', fontSize: '13px' }} />
               <Line type="monotone" dataKey="value" stroke="#facc15" strokeWidth={3.5} dot={{ fill: '#facc15', r: 6, strokeWidth: 2, stroke: '#facc15' }} />
             </LineChart>
