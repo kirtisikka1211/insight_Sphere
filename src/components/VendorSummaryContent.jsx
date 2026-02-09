@@ -43,7 +43,7 @@ export default function VendorSummaryContent() {
 
   return (
     <>
-      <strong style={{ fontSize: '15px' }}>Executive Summary</strong>
+      <strong style={{ fontSize: '18px', fontWeight: '600' }}>Executive Summary</strong>
       <br />
       Consolidated vendor performance analysis across 29 active vendors over the past 2 years, showing strong performance from strategic partners while identifying areas requiring attention.
 
@@ -122,7 +122,7 @@ export default function VendorSummaryContent() {
           <div className="signal bad">● Requires attention</div>
           <table>
             <thead>
-              <tr><th align="left">Vendor</th><th>2024</th><th>2025</th><th>Trend</th></tr>
+              <tr><th align="left">Vendor</th><th>2024</th><th>2025</th><th> SLA Trend</th></tr>
             </thead>
             <tbody>
               <tr><td>RapidWare</td><td>89%</td><td>76%</td><td className="bad">↓ -13%</td></tr>

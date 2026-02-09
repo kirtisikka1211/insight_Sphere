@@ -33,7 +33,7 @@ export default function VPOperationsContent() {
 
   return (
     <>
-      <strong style={{ fontSize: '15px' }}>Executive Summary</strong>
+      <strong style={{ fontSize: '18px', fontWeight: '600' }}>Executive Summary</strong>
       <br />
       Delivery performance remains largely stable across programs, however escalation frequency and rework increased in 2025, indicating rising execution complexity.
 
@@ -87,7 +87,7 @@ export default function VPOperationsContent() {
           <h3>Rework / Defect Rate</h3>
           <div className="signal warn">● Rising</div>
           <div className="metric"><span>Defect Rate</span><strong>6.8%</strong></div>
-          <ResponsiveContainer width="100%" height={180}>
+          <ResponsiveContainer width="100%" height={240}>
             <LineChart data={reworkData} margin={{ top: 20, right: 15, left: 15, bottom: 10 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#2a3441" strokeWidth={1.5} />
               <XAxis dataKey="year" stroke="#9ca3af" fontSize={13} fontWeight={500} />
@@ -102,7 +102,7 @@ export default function VPOperationsContent() {
           <h3>Delivery Confidence Index</h3>
           <div className="signal warn">● Watch closely</div>
           <div className="metric"><span>Score</span><strong>74 / 100</strong></div>
-          <ResponsiveContainer width="100%" height={180}>
+          <ResponsiveContainer width="100%" height={240}>
             <BarChart data={confidenceData} margin={{ top: 20, right: 15, left: 15, bottom: 10 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#2a3441" strokeWidth={1.5} />
               <XAxis dataKey="year" stroke="#9ca3af" fontSize={13} fontWeight={500} />

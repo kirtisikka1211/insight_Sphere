@@ -2,9 +2,10 @@ import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, R
 
 export default function CFOContent() {
   const revenueData = [
-    { year: '2023', value: 120 },
-    { year: '2024', value: 145 },
-    { year: '2025', value: 175 }
+    { quarter: 'Q1', base: 0, value: 20, total: 20 },
+    { quarter: 'Q2', base: 20, value: 25, total: 45 },
+    { quarter: 'Q3', base: 45, value: 35, total: 80 },
+    { quarter: 'Q4', base: 80, value: 20, total: 100 }
   ];
 
   const profitData = [
@@ -20,9 +21,9 @@ export default function CFOContent() {
   ];
 
   const cashFlowData = [
-    { year: '2023', value: 21.6 },
+    { year: '2023', value: 30.6 },
     { year: '2024', value: 25.8 },
-    { year: '2025', value: 30.6 }
+    { year: '2025', value: 21.6 }
   ];
 
   const dsoData = [
@@ -39,7 +40,7 @@ export default function CFOContent() {
 
   return (
     <>
-      <strong style={{ fontSize: '15px' }}>Executive Summary</strong>
+      <strong style={{ fontSize: '18px', fontWeight: '600' }}>Executive Summary</strong>
       <br />
       Revenue has grown consistently over the last three years, however margin expansion has slowed and cash efficiency requires attention.
 
@@ -47,14 +48,15 @@ export default function CFOContent() {
         <div className="card">
           <h3>Revenue Trajectory</h3>
           <div className="signal good">● Healthy growth</div>
-          <div className="metric"><span> CAGR</span><strong>18%</strong></div>
+          <div className="metric"><span>Total Revenue</span><strong>$100M</strong></div>
           <ResponsiveContainer width="100%" height={180}>
             <BarChart data={revenueData} margin={{ top: 20, right: 15, left: 15, bottom: 10 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#2a3441" strokeWidth={1.5} />
-              <XAxis dataKey="year" stroke="#9ca3af" fontSize={13} fontWeight={500} />
+              <XAxis dataKey="quarter" stroke="#9ca3af" fontSize={13} fontWeight={500} />
               <YAxis stroke="#9ca3af" fontSize={13} fontWeight={500} label={{ value: 'Dollars (M)', angle: -90, position: 'insideLeft', offset: 10, style: { fill: '#9ca3af', fontSize: 12 } }} />
               <Tooltip formatter={(value) => `$${value}M`} contentStyle={{ backgroundColor: '#1a1f2e', border: '1px solid #2a3441', borderRadius: '8px', fontSize: '13px' }} />
-              <Bar dataKey="value" fill="#22c55e" radius={[8, 8, 0, 0]} />
+              <Bar dataKey="base" stackId="a" fill="transparent" />
+              <Bar dataKey="value" stackId="a" fill="#22c55e" radius={[8, 8, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -63,7 +65,7 @@ export default function CFOContent() {
           <h3>Profitability</h3>
           <div className="signal warn">● Margin pressure</div>
           <div className="metric"><span>EBITDA Margin</span><strong>21%</strong></div>
-          <ResponsiveContainer width="100%" height={180}>
+          <ResponsiveContainer width="100%" height={240}>
             <LineChart data={profitData} margin={{ top: 20, right: 15, left: 15, bottom: 10 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#2a3441" strokeWidth={1.5} />
               <XAxis dataKey="year" stroke="#9ca3af" fontSize={13} fontWeight={500} />
@@ -78,7 +80,7 @@ export default function CFOContent() {
           <h3>Cost Structure</h3>
           <div className="signal warn">● Costs scaling</div>
           <div className="metric"><span>Total Opex</span><strong>$92M</strong></div>
-          <ResponsiveContainer width="100%" height={180}>
+          <ResponsiveContainer width="100%" height={240}>
             <BarChart data={costData} margin={{ top: 20, right: 15, left: 15, bottom: 10 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#2a3441" strokeWidth={1.5} />
               <XAxis dataKey="year" stroke="#9ca3af" fontSize={13} fontWeight={500} />
@@ -92,23 +94,23 @@ export default function CFOContent() {
         <div className="card">
           <h3>Cash Flow</h3>
           <div className="signal bad">● Cash strain</div>
-          <div className="metric"><span>Free Cash Flow</span><strong>$30.6M</strong></div>
-          <ResponsiveContainer width="100%" height={180}>
+          <div className="metric"><span>Free Cash Flow</span><strong>$21.6M</strong></div>
+          <ResponsiveContainer width="100%" height={240}>
             <LineChart data={cashFlowData} margin={{ top: 20, right: 15, left: 15, bottom: 10 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#2a3441" strokeWidth={1.5} />
               <XAxis dataKey="year" stroke="#9ca3af" fontSize={13} fontWeight={500} />
               <YAxis stroke="#9ca3af" fontSize={13} fontWeight={500} label={{ value: 'Dollars (M)', angle: -90, position: 'insideLeft', offset: 10, style: { fill: '#9ca3af', fontSize: 12 } }} />
               <Tooltip formatter={(value) => `$${value}M`} contentStyle={{ backgroundColor: '#1a1f2e', border: '1px solid #2a3441', borderRadius: '8px', fontSize: '13px' }} />
-              <Line type="monotone" dataKey="value" stroke="#22c55e" strokeWidth={3.5} dot={{ fill: '#22c55e', r: 6, strokeWidth: 2, stroke: '#22c55e' }} />
+              <Line type="monotone" dataKey="value" stroke="#ef4444" strokeWidth={3.5} dot={{ fill: '#ef4444', r: 6, strokeWidth: 2, stroke: '#ef4444' }} />
             </LineChart>
           </ResponsiveContainer>
         </div>
 
         <div className="card">
           <h3>Working Capital</h3>
-          <div className="signal warn">● DSO rising</div>
+          <div className="signal warn">● Days Sales Outstanding (DSO)</div>
           <div className="metric"><span>DSO</span><strong>68 days</strong></div>
-          <ResponsiveContainer width="100%" height={180}>
+          <ResponsiveContainer width="100%" height={240}>
             <LineChart data={dsoData} margin={{ top: 20, right: 15, left: 15, bottom: 10 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#2a3441" strokeWidth={1.5} />
               <XAxis dataKey="year" stroke="#9ca3af" fontSize={13} fontWeight={500} />
@@ -123,7 +125,7 @@ export default function CFOContent() {
           <h3>Risk Exposure</h3>
           <div className="signal warn">● Concentration risk</div>
           <div className="metric"><span>Top 3 Revenue</span><strong>41%</strong></div>
-          <ResponsiveContainer width="100%" height={180}>
+          <ResponsiveContainer width="100%" height={240}>
             <LineChart data={riskData} margin={{ top: 20, right: 15, left: 15, bottom: 10 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#2a3441" strokeWidth={1.5} />
               <XAxis dataKey="year" stroke="#9ca3af" fontSize={13} fontWeight={500} />
