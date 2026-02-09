@@ -51,11 +51,11 @@ export default function VendorSummaryContent() {
         <div className="card">
           <h3> Top Vendor Performance (2025)</h3>
           <div className="signal good">● Excellence across board</div>
-          <ResponsiveContainer width="100%" height={220}>
-            <BarChart data={performanceData} margin={{ top: 20, right: 15, left: 15, bottom: 10 }}>
+          <ResponsiveContainer width="100%" height={240}>
+            <BarChart data={performanceData} margin={{ top: 20, right: 15, left: 15, bottom: 45 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#2a3441" strokeWidth={1.5} />
-              <XAxis dataKey="name" stroke="#9ca3af" angle={-15} textAnchor="end" height={60} fontSize={13} fontWeight={500} />
-              <YAxis domain={[70, 100]} stroke="#9ca3af" fontSize={13} fontWeight={500} />
+              <XAxis dataKey="name" stroke="#9ca3af" angle={-35} textAnchor="end" fontSize={12} fontWeight={500} dy={5} dx={-5} />
+              <YAxis domain={[70, 100]} stroke="#9ca3af" fontSize={13} fontWeight={500} tickFormatter={(value) => `${value}%`} label={{ value: 'Percentage', angle: -90, position: 'insideLeft', offset: 10, style: { fill: '#9ca3af', fontSize: 12 } }} />
               <Tooltip formatter={(value) => `${value}%`} contentStyle={{ backgroundColor: '#1a1f2e', border: '1px solid #2a3441', borderRadius: '8px', fontSize: '13px' }} />
               <Bar dataKey="value" fill="#22c55e" radius={[8, 8, 0, 0]} />
             </BarChart>
@@ -109,7 +109,7 @@ export default function VendorSummaryContent() {
           <ResponsiveContainer width="100%" height={200}>
             <BarChart data={regionalData} margin={{ top: 20, right: 10, left: 10, bottom: 5 }} layout="vertical">
               <CartesianGrid strokeDasharray="3 3" stroke="#2a3441" />
-              <XAxis type="number" stroke="#9ca3af" fontSize={12} />
+              <XAxis type="number" stroke="#9ca3af" fontSize={12} label={{ value: 'Number of Vendors', position: 'insideBottom', offset: -5, style: { fill: '#9ca3af', fontSize: 12 } }} />
               <YAxis dataKey="region" type="category" stroke="#9ca3af" width={110} fontSize={12} />
               <Tooltip contentStyle={{ backgroundColor: '#1a1f2e', border: '1px solid #2a3441', borderRadius: '8px' }} />
               <Bar dataKey="vendors" fill="#3b82f6" radius={[0, 6, 6, 0]} />
@@ -136,16 +136,16 @@ export default function VendorSummaryContent() {
         <div className="card">
           <h3> Strategic Partners Growth</h3>
           <div className="signal good">● Strong momentum</div>
-          <ResponsiveContainer width="100%" height={200}>
-            <LineChart data={growthData} margin={{ top: 20, right: 10, left: 10, bottom: 5 }}>
+          <ResponsiveContainer width="100%" height={230}>
+            <LineChart data={growthData} margin={{ top: 20, right: 10, left: 30, bottom: 30 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#2a3441" />
-              <XAxis dataKey="quarter" stroke="#9ca3af" angle={-15} textAnchor="end" height={60} fontSize={12} />
-              <YAxis domain={[10, 40]} stroke="#9ca3af" fontSize={12} />
+              <XAxis dataKey="quarter" stroke="#9ca3af" angle={0} fontSize={10} label={{ value: 'Quarter', position: 'insideBottom', offset: -15, style: { fill: '#9ca3af', fontSize: 12 } }} />
+              <YAxis domain={[10, 40]} stroke="#9ca3af" fontSize={12} label={{ value: 'Percentage', angle: -90, position: 'insideLeft', offset: 10, style: { fill: '#9ca3af', fontSize: 12 } }} />
               <Tooltip formatter={(value) => `+${value}%`} contentStyle={{ backgroundColor: '#1a1f2e', border: '1px solid #2a3441', borderRadius: '8px' }} />
               <Line type="monotone" dataKey="value" stroke="#10b981" strokeWidth={3} dot={{ fill: '#10b981', r: 5 }} />
             </LineChart>
           </ResponsiveContainer>
-          <div className="metric"><span>YoY Growth</span><strong className="good">+89%</strong></div>
+          <div className="metric"><span>Growth</span><strong className="good">+89%</strong></div>
         </div>
       </div>
     </>

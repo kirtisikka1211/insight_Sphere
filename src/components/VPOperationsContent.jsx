@@ -41,12 +41,12 @@ export default function VPOperationsContent() {
         <div className="card">
           <h3>On-Time Delivery</h3>
           <div className="signal good">● Largely on track</div>
-          <div className="metric"><span>2025</span><strong>92%</strong></div>
+          <div className="metric"><span>Delivery Rate</span><strong>92%</strong></div>
           <ResponsiveContainer width="100%" height={180}>
             <BarChart data={deliveryData} margin={{ top: 20, right: 15, left: 15, bottom: 10 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#2a3441" strokeWidth={1.5} />
               <XAxis dataKey="year" stroke="#9ca3af" fontSize={13} fontWeight={500} />
-              <YAxis domain={[85, 95]} stroke="#9ca3af" fontSize={13} fontWeight={500} />
+              <YAxis domain={[85, 95]} stroke="#9ca3af" fontSize={13} fontWeight={500} label={{ value: 'Percentage', angle: -90, position: 'insideLeft', offset: 10, style: { fill: '#9ca3af', fontSize: 12 } }} />
               <Tooltip contentStyle={{ backgroundColor: '#1a1f2e', border: '1px solid #2a3441', borderRadius: '8px', fontSize: '13px' }} />
               <Bar dataKey="value" fill="#22c55e" radius={[8, 8, 0, 0]} />
             </BarChart>
@@ -56,12 +56,12 @@ export default function VPOperationsContent() {
         <div className="card">
           <h3>SLA Compliance</h3>
           <div className="signal warn">● Minor slippage</div>
-          <div className="metric"><span>2025</span><strong>89%</strong></div>
+          <div className="metric"><span>Compliance %</span><strong>89%</strong></div>
           <ResponsiveContainer width="100%" height={180}>
             <LineChart data={slaData} margin={{ top: 20, right: 15, left: 15, bottom: 10 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#2a3441" strokeWidth={1.5} />
               <XAxis dataKey="year" stroke="#9ca3af" fontSize={13} fontWeight={500} />
-              <YAxis domain={[85, 95]} stroke="#9ca3af" fontSize={13} fontWeight={500} />
+              <YAxis domain={[85, 95]} stroke="#9ca3af" fontSize={13} fontWeight={500} label={{ value: 'Percentage', angle: -90, position: 'insideLeft', offset: 10, style: { fill: '#9ca3af', fontSize: 12 } }} />
               <Tooltip contentStyle={{ backgroundColor: '#1a1f2e', border: '1px solid #2a3441', borderRadius: '8px', fontSize: '13px' }} />
               <Line type="monotone" dataKey="value" stroke="#facc15" strokeWidth={3.5} dot={{ fill: '#facc15', r: 6, strokeWidth: 2, stroke: '#facc15' }} />
             </LineChart>
@@ -71,12 +71,12 @@ export default function VPOperationsContent() {
         <div className="card">
           <h3>Escalations</h3>
           <div className="signal bad">● Increasing</div>
-          <div className="metric"><span>2025</span><strong>37</strong></div>
+          <div className="metric"><span>Number</span><strong>37</strong></div>
           <ResponsiveContainer width="100%" height={180}>
             <BarChart data={escalationsData} margin={{ top: 20, right: 15, left: 15, bottom: 10 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#2a3441" strokeWidth={1.5} />
               <XAxis dataKey="year" stroke="#9ca3af" fontSize={13} fontWeight={500} />
-              <YAxis domain={[0, 40]} stroke="#9ca3af" fontSize={13} fontWeight={500} />
+              <YAxis domain={[0, 40]} stroke="#9ca3af" fontSize={13} fontWeight={500} label={{ value: 'Count', angle: -90, position: 'insideLeft', offset: 10, style: { fill: '#9ca3af', fontSize: 12 } }} />
               <Tooltip contentStyle={{ backgroundColor: '#1a1f2e', border: '1px solid #2a3441', borderRadius: '8px', fontSize: '13px' }} />
               <Bar dataKey="value" fill="#ef4444" radius={[8, 8, 0, 0]} />
             </BarChart>
@@ -86,12 +86,12 @@ export default function VPOperationsContent() {
         <div className="card">
           <h3>Rework / Defect Rate</h3>
           <div className="signal warn">● Rising</div>
-          <div className="metric"><span>2025</span><strong>6.8%</strong></div>
+          <div className="metric"><span>Defect Rate</span><strong>6.8%</strong></div>
           <ResponsiveContainer width="100%" height={180}>
             <LineChart data={reworkData} margin={{ top: 20, right: 15, left: 15, bottom: 10 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#2a3441" strokeWidth={1.5} />
               <XAxis dataKey="year" stroke="#9ca3af" fontSize={13} fontWeight={500} />
-              <YAxis domain={[0, 8]} stroke="#9ca3af" fontSize={13} fontWeight={500} />
+              <YAxis domain={[0, 8]} stroke="#9ca3af" fontSize={13} fontWeight={500} label={{ value: 'Percentage', angle: -90, position: 'insideLeft', offset: 10, style: { fill: '#9ca3af', fontSize: 12 } }} />
               <Tooltip formatter={(value) => `${value}%`} contentStyle={{ backgroundColor: '#1a1f2e', border: '1px solid #2a3441', borderRadius: '8px', fontSize: '13px' }} />
               <Line type="monotone" dataKey="value" stroke="#facc15" strokeWidth={3.5} dot={{ fill: '#facc15', r: 6, strokeWidth: 2, stroke: '#facc15' }} />
             </LineChart>
@@ -106,7 +106,7 @@ export default function VPOperationsContent() {
             <BarChart data={confidenceData} margin={{ top: 20, right: 15, left: 15, bottom: 10 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#2a3441" strokeWidth={1.5} />
               <XAxis dataKey="year" stroke="#9ca3af" fontSize={13} fontWeight={500} />
-              <YAxis domain={[0, 100]} stroke="#9ca3af" fontSize={13} fontWeight={500} />
+              <YAxis domain={[0, 100]} stroke="#9ca3af" fontSize={13} fontWeight={500} label={{ value: 'Score', angle: -90, position: 'insideLeft', offset: 10, style: { fill: '#9ca3af', fontSize: 12 } }} />
               <Tooltip contentStyle={{ backgroundColor: '#1a1f2e', border: '1px solid #2a3441', borderRadius: '8px', fontSize: '13px' }} />
               <Bar dataKey="value" radius={[8, 8, 0, 0]}>
                 {confidenceData.map((entry, index) => (
