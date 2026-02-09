@@ -113,9 +113,12 @@ function App() {
 
       <div className="chat">
         {messages.length === 0 && (
-          <div className="msg bot welcome-msg">
-            Ask me anything. Try:
-            <ul>
+          <div className="welcome-start">
+            <div className="welcome-hero">
+              <img src="/insights-sphere-logo.png" alt="Insights Sphere" className="welcome-image" />
+            </div>
+            <p className="welcome-prompt">Ask me anything. Try:</p>
+            <ul className="welcome-list">
               <li>Show me delivery performance for the last 3 years</li>
               <li>Show me my vendor summary based on the past 2 years of data</li>
               <li>Show me our financial performance for the last 3 years</li>
